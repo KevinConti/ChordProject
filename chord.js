@@ -22,13 +22,24 @@ var userInput = function getUserInput() {
     //
     // Get two properties from the user: username and email
     //
-    prompt.get(['username', 'email'], function (err, result) {
+    prompt.get([{
+        name: 'B',
+        description: 'Welcome to chord! Please enter your ID-Space (B) value as a single-digit integer',
+        type: 'integer',
+        message: 'Must be a single-digit integer. Try again.'
+    }, {
+        name: 'N',
+        description: 'Thank you! Next, enter in the number of nodes you wish to display',
+        type: 'integer',
+        message: 'Must be an integer. Try again.'}], function (err, result) {
         //
         // Log the results.
         //
         console.log('Command-line input received:');
-        console.log('  username: ' + result.username);
-        console.log('  email: ' + result.email);
+        console.log('  B: ' + result.B);
+        console.log('  N: ' + result.N);
+        prompt.stop();
+        return result;
     });
 }();
 
